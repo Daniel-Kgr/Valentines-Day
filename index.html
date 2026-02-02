@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   text-align: center;
 }
@@ -24,7 +24,7 @@ body {
   border-radius: 20px;
   backdrop-filter: blur(10px);
   width: 90%;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 input {
@@ -51,6 +51,53 @@ button {
 .hidden {
   display: none;
 }
+
+/* Galerie Styles */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+
+#lightbox.show {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 </head>
 
@@ -58,18 +105,31 @@ button {
 
 <div class="container" id="loginBox">
   <h1>❤️</h1>
-  <h2>Only for you</h2>
+  <h2>Happy Valentines Day my Love</h2>
   <p>Type in our Anniversary Date to unlock this special Message 💌</p>
   <input type="password" id="passwordInput" placeholder="Passwort">
   <br>
-  <button onclick="checkPassword()">Öffnen</button>
+  <button onclick="checkPassword()">Open</button>
   <p id="error" style="color: #ffe6e6;"></p>
 </div>
 
 <div class="container hidden" id="mainContent">
   <h2>Happy Valentines Day my Love ❤️</h2>
-  <p>Danke, dass du mein Zuhause bist – selbst über jede Distanz.</p>
-  <p>Ich liebe dich mehr als Worte sagen können.</p>
+  <p>TEXT</p>
+  <p>TEXT</p>
+
+  <div class="gallery">
+    <img src="images/photo1.jpg" alt="Foto 1">
+    <img src="images/photo2.jpg" alt="Foto 2">
+    <img src="images/photo3.jpg" alt="Foto 3">
+    <img src="images/photo4.jpg" alt="Foto 4">
+    <!-- Weitere Bilder hier hinzufügen -->
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" onclick="hideLightbox()">
+  <img id="lightboxImg" src="">
 </div>
 
 <script>
@@ -83,6 +143,22 @@ function checkPassword() {
   } else {
     document.getElementById("error").innerText = "Nuh-uh thats not correct ❤️ Try again xD";
   }
+}
+
+// Lightbox Funktion
+const galleryImages = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+  });
+});
+
+function hideLightbox() {
+  lightbox.classList.remove("show");
 }
 </script>
 
