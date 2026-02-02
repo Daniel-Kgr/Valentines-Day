@@ -111,6 +111,7 @@ button {
     max-width: 90%;
   }
 }
+
 /* Herz Animation */
 .heart {
   position: absolute;
@@ -126,7 +127,6 @@ button {
   30% { opacity: 1; transform: translateY(-10px) scale(1); }
   100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
 }
-  
 </style>
 </head>
 
@@ -193,18 +193,25 @@ function showSlide(index) {
   const offset = -slideIndex * 100;
   document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
 
-  // Herzchen erzeugen
+  // Herz-Feuerwerk erzeugen
+  createHeartFirework();
+}
+
+function changeSlide(n) {
+  slideIndex += n;
+  showSlide(slideIndex);
+}
+
+// Herz-Feuerwerk-Funktion
 function createHeartFirework() {
   const carousel = document.querySelector(".carousel-container");
-
-  // Anzahl der Herzen pro Klick
-  const heartCount = 5;
+  const heartCount = 5; // Anzahl der Herzen
 
   for (let i = 0; i < heartCount; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
 
-    // Zufällige Position und Größe
+    // Zufällige Position & Größe
     heart.style.left = `${Math.random() * 80 + 10}%`;
     heart.style.top = `${Math.random() * 50 + 30}%`;
     heart.style.fontSize = `${Math.random() * 30 + 20}px`;
@@ -212,29 +219,15 @@ function createHeartFirework() {
     heart.innerHTML = "❤️";
     carousel.appendChild(heart);
 
-    // Herz nach kurzer Zeit entfernen
+    // Herz entfernen nach kurzer Zeit
     setTimeout(() => {
       heart.remove();
-    }, 1200 + Math.random() * 500); // Variation in Dauer
+    }, 1200 + Math.random() * 500);
   }
 }
 
-
 // Initial anzeigen
-function showSlide(index) {
-  const slides = document.querySelectorAll(".carousel-slide img");
-  const total = slides.length;
-
-  if(index >= total) slideIndex = 0;
-  if(index < 0) slideIndex = total - 1;
-
-  const offset = -slideIndex * 100;
-  document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
-
-  // Herz-Feuerwerk erzeugen
-  createHeartFirework();
-}
-
+showSlide(slideIndex);
 </script>
 
 </body>
