@@ -60,32 +60,12 @@ button:hover { transform: scale(1.1); }
   transform: scale(1.1);
 }
 
-/* Carousel & Herzchen */
-.container {
-  background: rgba(255,255,255,0.15);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
-  text-align: center;
-}
-
-/* Carousel Wrapper */
-.carousel-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Carousel */
+.carousel-container {
+  width: 100%;
   max-width: 600px;
   margin: 20px auto;
-  position: relative;
-}
-
-.carousel-container {
   overflow: hidden;
-  width: 100%;
-  border-radius: 15px;
   position: relative;
 }
 
@@ -97,7 +77,6 @@ button:hover { transform: scale(1.1); }
 
 .carousel-item {
   min-width: 100%;
-  box-sizing: border-box;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -107,27 +86,29 @@ button:hover { transform: scale(1.1); }
 .carousel-item img {
   width: 100%;
   height: auto;
-  display: block;
-  border-radius: 15px;
   margin-top: 20px;
+  border-radius: 15px;
 }
 
 /* Pfeile links/rechts */
 .prev, .next {
-  font-size: 35px;
+  font-size: 30px;
   padding: 10px;
   border-radius: 50%;
   border: none;
   background-color: rgba(255,255,255,0.6);
   color: #ff4b6e;
   cursor: pointer;
-  margin: 0 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 10;
 }
-.prev { position: absolute; left: -50px; top: 50%; transform: translateY(-50%); }
-.next { position: absolute; right: -50px; top: 50%; transform: translateY(-50%); }
+.prev { left: -60px; }
+.next { right: -60px; }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
+/* Herzchen */
 .heart {
   position: absolute;
   font-size: 40px;
@@ -186,36 +167,42 @@ button:hover { transform: scale(1.1); }
   </div>
 
   <div class="container hidden" id="mainContent">
-    <div class="carousel-wrapper">
-      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-      <div class="carousel-container">
-        <div class="carousel-slide">
-          <div class="carousel-item">
-            <h3>Foto 1 Text: Our first memory together ❤️</h3>
-            <img src="images/CSD.jpg" alt="Foto 1">
-          </div>
-          <div class="carousel-item">
-            <h3>Foto 2 Text: Remember this day? 😘</h3>
-            <img src="images/football.jpg" alt="Foto 2">
-          </div>
-          <div class="carousel-item">
-            <h3>Foto 3 Text: Our favorite festival!</h3>
-            <img src="images/Lollapalooza.jpg" alt="Foto 3">
-          </div>
-          <div class="carousel-item">
-            <h3>Foto 4 Text: Walks at the museum island</h3>
-            <img src="images/Musemsinsel.jpg" alt="Foto 4">
-          </div>
-          <div class="carousel-item">
-            <h3>Foto 5 Text: The city adventures ❤️</h3>
-            <img src="images/Rathhaus.jpg" alt="Foto 5">
-          </div>
-          <div class="carousel-item">
-            <h3>Foto 6 Text: Treptower memories 😍</h3>
-            <img src="images/Treptower.jpg" alt="Foto 6">
-          </div>
+    <!-- Text oberhalb des Carousels -->
+    <h2>Happy Valentines Day my Love ❤️</h2>
+    <p>As we are not able to celebrate this years Valentines Day together i was thinking of something special to surprise you.</p>
+    <p>So i learned how to write basic codes in HTML and created this small website for you.</p>
+
+    <!-- Carousel -->
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <div class="carousel-item">
+          <h3>Foto 1: CSD Memories ❤️</h3>
+          <img src="images/CSD.jpg" alt="Foto 1">
+        </div>
+        <div class="carousel-item">
+          <h3>Foto 2: Football Fun ⚽</h3>
+          <img src="images/football.jpg" alt="Foto 2">
+        </div>
+        <div class="carousel-item">
+          <h3>Foto 3: Lollapalooza 🎶</h3>
+          <img src="images/Lollapalooza.jpg" alt="Foto 3">
+        </div>
+        <div class="carousel-item">
+          <h3>Foto 4: Musemsinsel 🏛️</h3>
+          <img src="images/Musemsinsel.jpg" alt="Foto 4">
+        </div>
+        <div class="carousel-item">
+          <h3>Foto 5: Rathhaus ❤️</h3>
+          <img src="images/Rathhaus.jpg" alt="Foto 5">
+        </div>
+        <div class="carousel-item">
+          <h3>Foto 6: Treptower 🌅</h3>
+          <img src="images/Treptower.jpg" alt="Foto 6">
         </div>
       </div>
+
+      <!-- Pfeile -->
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
   </div>
@@ -227,6 +214,7 @@ const noPage = document.getElementById("noPage");
 const noPage2 = document.getElementById("noPage2");
 const yesPage = document.getElementById("yesPage");
 
+// Landing / No-Seiten Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   yesPage.classList.remove("hidden");
@@ -248,6 +236,7 @@ document.getElementById("yesBtnNo2").addEventListener("click", () => {
   yesPage.classList.remove("hidden");
 });
 
+// Öffne Carousel
 document.getElementById("openCarouselBtn").addEventListener("click", () => {
   document.getElementById("openContainer").classList.add("hidden");
   document.getElementById("mainContent").classList.remove("hidden");
@@ -255,12 +244,13 @@ document.getElementById("openCarouselBtn").addEventListener("click", () => {
 });
 
 let slideIndex = 0;
+
 function showSlide(index) {
   const carouselSlide = document.querySelector("#yesPage .carousel-slide");
   const slides = carouselSlide.querySelectorAll(".carousel-item");
   const total = slides.length;
-  if(index >= total) slideIndex = 0;
-  if(index < 0) slideIndex = total - 1;
+  if (index >= total) slideIndex = 0;
+  if (index < 0) slideIndex = total - 1;
   carouselSlide.style.transform = `translateX(${-slideIndex * 100}%)`;
   createHeartFirework();
 }
@@ -270,6 +260,7 @@ function changeSlide(n) {
   showSlide(slideIndex);
 }
 
+// Herzchen-Animation
 function createHeartFirework() {
   const carousel = document.querySelector("#yesPage .carousel-container");
   for (let i = 0; i < 5; i++) {
