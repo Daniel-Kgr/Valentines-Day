@@ -157,6 +157,17 @@ button:hover { transform: scale(1.1); }
     max-height: 250px;
   }
 }
+ #countdown {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 400px;
+  margin: 10px auto;
+  font-size: 20px;
+  text-align: center;
+} 
 </style>
 </head>
 <body>
@@ -246,6 +257,13 @@ button:hover { transform: scale(1.1); }
            <p>See you in just 21 days, my Love!❤️</p>
             <img src="images/Treptower.jpg" alt="Foto 6">
           </div>
+          <div class="carousel-item">
+            <h3>Until we will hug each other again!❤️</h3>
+          <div id="countdown">
+          <p id="timer">Loading...</p>
+  </div>
+</div>
+
         </div>
       </div>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
@@ -318,6 +336,30 @@ function createHeartFirework() {
     setTimeout(() => heart.remove(), 1200 + Math.random() * 500);
   }
 }
+// Countdown bis zum 07.03.2026 06:50 Berliner Zeit
+// Berlin = UTC+1 im Winter, +2 im Sommer
+const countdownDateBerlin = new Date(Date.UTC(2026, 2, 7, 5, 50, 0)); 
+  
+function updateCountdown() {
+  const now = new Date().getTime();
+  const distance = countdownDateBerlin.getTime() - now;
+
+  if (distance < 0) {
+    document.getElementById("timer").innerHTML = "Der Tag ist da! ❤️";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("timer").innerHTML =
+    `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
+}
+
+setInterval(updateCountdown, 1000);
+
 </script>
 
 </body>
