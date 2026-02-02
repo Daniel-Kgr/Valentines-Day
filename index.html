@@ -355,7 +355,7 @@ function updateCountdown() {
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   document.getElementById("timer").innerHTML =
-    `${days} Tage ${hours}h ${minutes}m ${seconds}s`;
+    `${days} Days ${hours}h ${minutes}m ${seconds}s`;
 }
 
 setInterval(updateCountdown, 1000);
