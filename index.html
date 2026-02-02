@@ -34,7 +34,14 @@ button {
 }
 button:hover { transform: scale(1.1); }
 #yesBtnLanding, #yesBtnFun, #yesBtnFun2 { background-color: #ff4b6e; }
-#noBtnLanding, #noBtnFun, #noBtnFun2 { background-color: #555; }
+#noBtnLanding, #noBtnFun { background-color: #555; }
+
+/* Fun-Seite 1 Bild verkleinern */
+#funPage img {
+  max-width: 50%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
 
 /* Carousel & Herzchen */
 .container {
@@ -105,7 +112,32 @@ button:hover { transform: scale(1.1); }
   100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
 }
 .hidden { display: none; }
-img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
+
+/* Lightbox Styles */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+}
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+#lightbox.show {
+  visibility: visible;
+  opacity: 1;
+}
 </style>
 </head>
 <body>
@@ -126,24 +158,25 @@ img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
   <h2>Try again honey 😘</h2>
   <div>
     <button id="yesBtnFun">YES 😍</button>
-    <button id="noBtnFun">No </button>
+    <button id="noBtnFun">No 😢</button>
   </div>
 </section>
 
 <!-- Fun-Seite 2 -->
 <section id="funPage2" class="hidden">
   <h1>Seriously???</h1>
-  <p>Let me ask you again...</p>
-  <h2>Will you be my Valentine?❤️</h2>
+  <p>Let me ask you againg..</p>
+  <h2>Will you be my Valentine? ❤️</h2>
+  <div>
     <button id="yesBtnFun2">YES I WILL!! ❤️😍</button>
   </div>
 </section>
 
-<!-- „Passwort“-Seite jetzt nur ein Klick -->
+<!-- Klick-Seite -->
 <section id="passwordPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
-    <p>Klick on this button to get your special Valentines Message</p>
+    <p>Click on this button to see your special Valentines Message</p>
     <button id="openCarouselBtn">Öffnen</button>
   </div>
 
@@ -168,6 +201,11 @@ img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
   </div>
 </section>
 
+<!-- Lightbox -->
+<div id="lightbox">
+  <img src="" alt="Vergrößertes Bild">
+</div>
+
 <script>
 // Elemente
 const landing = document.getElementById("landing");
@@ -180,29 +218,21 @@ document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   passwordPage.classList.remove("hidden");
 });
-
 document.getElementById("noBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   funPage.classList.remove("hidden");
 });
-
 document.getElementById("yesBtnFun").addEventListener("click", () => {
   funPage.classList.add("hidden");
   passwordPage.classList.remove("hidden");
 });
-
 document.getElementById("noBtnFun").addEventListener("click", () => {
   funPage.classList.add("hidden");
   funPage2.classList.remove("hidden");
 });
-
 document.getElementById("yesBtnFun2").addEventListener("click", () => {
   funPage2.classList.add("hidden");
   passwordPage.classList.remove("hidden");
-});
-
-document.getElementById("noBtnFun2").addEventListener("click", () => {
-  funPage2.innerHTML = "<h1>😭 Schade, vielleicht ein anderes Mal...</h1>";
 });
 
 // Button, um Carousel zu öffnen
@@ -218,13 +248,9 @@ function showSlide(index) {
   const carouselSlide = document.querySelector("#passwordPage .carousel-slide");
   const slides = carouselSlide.querySelectorAll("img");
   const total = slides.length;
-
   if(index >= total) slideIndex = 0;
   if(index < 0) slideIndex = total - 1;
-
-  const offset = -slideIndex * 100;
-  carouselSlide.style.transform = `translateX(${offset}%)`;
-
+  carouselSlide.style.transform = `translateX(${-slideIndex * 100}%)`;
   createHeartFirework();
 }
 function changeSlide(n) {
@@ -235,8 +261,7 @@ function changeSlide(n) {
 // Herz-Feuerwerk
 function createHeartFirework() {
   const carousel = document.querySelector("#passwordPage .carousel-container");
-  const heartCount = 5;
-  for (let i = 0; i < heartCount; i++) {
+  for (let i = 0; i < 5; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.style.left = `${Math.random() * 80 + 10}%`;
@@ -244,10 +269,21 @@ function createHeartFirework() {
     heart.style.fontSize = `${Math.random() * 30 + 20}px`;
     heart.innerHTML = "❤️";
     carousel.appendChild(heart);
-    setTimeout(() => { heart.remove(); }, 1200 + Math.random() * 500);
+    setTimeout(() => heart.remove(), 1200 + Math.random() * 500);
   }
 }
-</script>
 
+// Lightbox
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = lightbox.querySelector("img");
+document.querySelectorAll("#passwordPage .carousel-slide img").forEach(img => {
+  img.addEventListener("click", () => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("show");
+  });
+});
+lightbox.addEventListener("click", () => lightbox.classList.remove("show"));
+
+</script>
 </body>
 </html>
