@@ -60,15 +60,15 @@ button:hover { transform: scale(1.1); }
   transform: scale(1.1);
 }
 
-/* Carousel & Herzchen */
+/* Container für Text-Box */
 .container {
   background: rgba(255,255,255,0.15);
-  padding: 30px;
+  padding: 20px 30px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   width: 90%;
   max-width: 600px;
-  margin: auto;
+  margin: 10px auto;
 }
 
 /* Carousel Wrapper */
@@ -76,7 +76,7 @@ button:hover { transform: scale(1.1); }
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 600px;
+  max-width: 650px;
   margin: 20px auto;
 }
 
@@ -100,15 +100,13 @@ button:hover { transform: scale(1.1); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .carousel-item img {
   width: 100%;
-  max-height: 300px;
-  object-fit: cover;
+  height: auto; /* Bild proportional, kein Abschneiden */
   border-radius: 15px;
-  margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 /* Pfeile links/rechts */
@@ -120,8 +118,8 @@ button:hover { transform: scale(1.1); }
   background-color: rgba(255,255,255,0.6);
   color: #ff4b6e;
   cursor: pointer;
-  margin: 0 10px;
   z-index: 10;
+  position: relative;
 }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
@@ -144,7 +142,6 @@ button:hover { transform: scale(1.1); }
 </head>
 <body>
 
-<!-- Landing Page -->
 <section id="landing">
   <h1>Will you be my Valentine? ❤️</h1>
   <div>
@@ -153,7 +150,6 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- No-Seite -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -164,7 +160,6 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -174,7 +169,6 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Yes-Seite -->
 <section id="yesPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
@@ -188,27 +182,27 @@ button:hover { transform: scale(1.1); }
       <div class="carousel-container">
         <div class="carousel-slide">
           <div class="carousel-item">
-            <h3>Happy Valentines Day my Love ❤️</h3>
+            <div class="container"><h3>Happy Valentines Day my Love ❤️</h3></div>
             <img src="images/CSD.jpg" alt="Foto 1">
           </div>
           <div class="carousel-item">
-            <h3>Foto 2 Text: Remember this day? 😘</h3>
+            <div class="container"><h3>Foto 2 Text: Remember this day? 😘</h3></div>
             <img src="images/football.jpg" alt="Foto 2">
           </div>
           <div class="carousel-item">
-            <h3>Foto 3 Text: Our favorite festival!</h3>
+            <div class="container"><h3>Foto 3 Text: Our favorite festival!</h3></div>
             <img src="images/Lollapalooza.jpg" alt="Foto 3">
           </div>
           <div class="carousel-item">
-            <h3>Foto 4 Text: Walks at the museum island</h3>
+            <div class="container"><h3>Foto 4 Text: Walks at the museum island</h3></div>
             <img src="images/Musemsinsel.jpg" alt="Foto 4">
           </div>
           <div class="carousel-item">
-            <h3>Foto 5 Text: The city adventures ❤️</h3>
+            <div class="container"><h3>Foto 5 Text: The city adventures ❤️</h3></div>
             <img src="images/Rathhaus.jpg" alt="Foto 5">
           </div>
           <div class="carousel-item">
-            <h3>Foto 6 Text: Treptower memories 😍</h3>
+            <div class="container"><h3>Foto 6 Text: Treptower memories 😍</h3></div>
             <img src="images/Treptower.jpg" alt="Foto 6">
           </div>
         </div>
