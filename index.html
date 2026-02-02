@@ -33,11 +33,11 @@ button {
   transition: transform 0.2s;
 }
 button:hover { transform: scale(1.1); }
-#yesBtnLanding, #yesBtnFun, #yesBtnFun2 { background-color: #ff4b6e; }
-#noBtnLanding, #noBtnFun { background-color: #555; }
+#yesBtnLanding, #yesBtnNo, #yesBtnNo2 { background-color: #ff4b6e; }
+#noBtnLanding, #noBtnNo { background-color: #555; }
 
-/* Fun-Seite 1 Bild verkleinern */
-#funPage img {
+/* No-Seite 1 Bild */
+#noPage img {
   max-width: 40%;
   max-height: 40%;
   border-radius: 20px;
@@ -143,29 +143,29 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Fun-Seite 1 -->
-<section id="funPage" class="hidden">
+<!-- Fun-Seite 1 → noPage -->
+<section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
   <h2>Try again honey 😘</h2>
   <div>
-    <button id="yesBtnFun">YES 😍</button>
-    <button id="noBtnFun">No</button>
+    <button id="yesBtnNo">YES 😍</button>
+    <button id="noBtnNo">No</button>
   </div>
 </section>
 
-<!-- Fun-Seite 2 -->
-<section id="funPage2" class="hidden">
+<!-- Fun-Seite 2 → noPage2 -->
+<section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
   <h2>Will you be my Valentine? ❤️</h2>
   <div>
-    <button id="yesBtnFun2">YES I WILL!! ❤️😍</button>
+    <button id="yesBtnNo2">YES I WILL!! ❤️😍</button>
   </div>
 </section>
 
-<!-- Klick-Seite -->
-<section id="passwordPage" class="hidden">
+<!-- Klick-Seite → yesPage -->
+<section id="yesPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
     <p>Click the button to see your special Valentines Message</p>
@@ -196,30 +196,30 @@ button:hover { transform: scale(1.1); }
 <script>
 // Elemente
 const landing = document.getElementById("landing");
-const funPage = document.getElementById("funPage");
-const funPage2 = document.getElementById("funPage2");
-const passwordPage = document.getElementById("passwordPage");
+const noPage = document.getElementById("noPage");
+const noPage2 = document.getElementById("noPage2");
+const yesPage = document.getElementById("yesPage");
 
 // Landing / Fun-Seite Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
-  passwordPage.classList.remove("hidden");
+  yesPage.classList.remove("hidden");
 });
 document.getElementById("noBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
-  funPage.classList.remove("hidden");
+  noPage.classList.remove("hidden");
 });
 document.getElementById("yesBtnFun").addEventListener("click", () => {
-  funPage.classList.add("hidden");
-  passwordPage.classList.remove("hidden");
+  noPage.classList.add("hidden");
+  yesPage.classList.remove("hidden");
 });
 document.getElementById("noBtnFun").addEventListener("click", () => {
-  funPage.classList.add("hidden");
-  funPage2.classList.remove("hidden");
+  noPage.classList.add("hidden");
+  noPage2.classList.remove("hidden");
 });
 document.getElementById("yesBtnFun2").addEventListener("click", () => {
-  funPage2.classList.add("hidden");
-  passwordPage.classList.remove("hidden");
+  noPage2.classList.add("hidden");
+  yesPage.classList.remove("hidden");
 });
 
 // Button, um Carousel zu öffnen
@@ -232,7 +232,7 @@ document.getElementById("openCarouselBtn").addEventListener("click", () => {
 // Carousel-Funktion
 let slideIndex = 0;
 function showSlide(index) {
-  const carouselSlide = document.querySelector("#passwordPage .carousel-slide");
+  const carouselSlide = document.querySelector("#yesPage .carousel-slide");
   const slides = carouselSlide.querySelectorAll("img");
   const total = slides.length;
   if(index >= total) slideIndex = 0;
@@ -247,7 +247,7 @@ function changeSlide(n) {
 
 // Herz-Feuerwerk
 function createHeartFirework() {
-  const carousel = document.querySelector("#passwordPage .carousel-container");
+  const carousel = document.querySelector("#yesPage .carousel-container");
   for (let i = 0; i < 5; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
