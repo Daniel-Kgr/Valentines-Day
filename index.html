@@ -75,8 +75,9 @@ button:hover { transform: scale(1.1); }
   position: relative;
   width: 100%;
   max-width: 500px;
+  height: 300px; /* feste Höhe */
   margin: 20px auto;
-  overflow: hidden;
+  overflow: visible; /* Pfeile außerhalb sichtbar */
   border-radius: 20px;
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.1);
@@ -85,19 +86,19 @@ button:hover { transform: scale(1.1); }
 .carousel-slide {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  width: 100%;
+  height: 100%;
 }
 
 .carousel-slide img {
   width: 100%;
+  height: 100%;
   flex-shrink: 0;
   border-radius: 15px;
-  object-fit: contain;
+  object-fit: cover; /* oder contain, je nach Wunsch */
   cursor: pointer;
-  /* Hover entfernt, keine Verschiebung */
 }
 
-/* Pfeile fixieren */
+/* Pfeile links/rechts außerhalb der Bilder */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -109,12 +110,16 @@ button:hover { transform: scale(1.1); }
   border-radius: 50%;
   cursor: pointer;
   color: #ff4b6e;
-  z-index: 20;
-  pointer-events: auto; /* damit Klicks funktionieren */
+  z-index: 100;
+  pointer-events: auto;
 }
-.prev { left: 10px; }
-.next { right: 10px; }
-.prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
+
+.prev { left: -50px; }
+.next { right: -50px; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(255,255,255,0.9);
+}
 
 .heart {
   position: absolute;
@@ -144,7 +149,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- No-Seite 1 -->
+<!-- Fun-Seite 1 → noPage -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -155,7 +160,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- No-Seite 2 -->
+<!-- Fun-Seite 2 → noPage2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -188,6 +193,7 @@ button:hover { transform: scale(1.1); }
         <img src="images/Rathhaus.jpg" alt="Foto 5">
         <img src="images/Treptower.jpg" alt="Foto 6">
       </div>
+      <!-- Pfeile jetzt außerhalb -->
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
@@ -201,7 +207,7 @@ const noPage = document.getElementById("noPage");
 const noPage2 = document.getElementById("noPage2");
 const yesPage = document.getElementById("yesPage");
 
-// Landing / No-Seiten Logik
+// Landing / Fun-Seite Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   yesPage.classList.remove("hidden");
