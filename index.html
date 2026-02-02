@@ -144,25 +144,20 @@ img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
   </div>
 </section>
 
-<!-- Passwort + Carousel -->
+<!-- Passwort-Seite (jetzt nur ein Button) -->
 <section id="passwordPage" class="hidden">
-  <div class="container" id="loginBox">
-    <h1>❤️</h1>
-    <h2>For Katt</h2>
-    <h3>Happy Valentines Day my Love</h3>
-    <p>Type in our Anniversary Date to unlock this special Message 💌</p>
-    <input type="password" id="passwordInput" placeholder="Passwort">
-    <br>
-    <button onclick="checkPassword()">Open</button>
-    <p id="error" style="color: #ffe6e6;"></p>
+  <div class="container" id="openContainer">
+    <h2>Hier geht’s zu unseren Erinnerungen ❤️</h2>
+    <p>Klicke auf den Button, um die Bilder zu sehen!</p>
+    <button id="openCarouselBtn">Öffnen</button>
   </div>
 
+  <!-- Carousel, initial versteckt -->
   <div class="container hidden" id="mainContent">
     <h2>Happy Valentines Day my Love ❤️</h2>
     <p>TEXT</p>
     <p>TEXT</p>
 
-    <!-- Carousel -->
     <div class="carousel-container">
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <div class="carousel-slide">
@@ -177,6 +172,7 @@ img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
     </div>
   </div>
 </section>
+
 
 <script>
 // Landing / Fun Page Logik
@@ -203,18 +199,14 @@ document.getElementById("noBtnFun").addEventListener("click", () => {
   funPage.innerHTML = "<h1>😢 Schade, vielleicht ein anderes Mal...</h1>";
 });
 
-// Passwort-Funktion
-const correctPassword = "02.04.2024";
+// Button, um Carousel zu öffnen
+document.getElementById("openCarouselBtn").addEventListener("click", () => {
+  document.getElementById("openContainer").classList.add("hidden");
+  document.getElementById("mainContent").classList.remove("hidden");
+  // Carousel initial anzeigen
+  showSlide(slideIndex);
+});
 
-function checkPassword() {
-  const input = document.getElementById("passwordInput").value;
-  if(input === correctPassword) {
-    document.getElementById("loginBox").classList.add("hidden");
-    document.getElementById("mainContent").classList.remove("hidden");
-  } else {
-    document.getElementById("error").innerText = "Nuh-uh thats not correct ❤️ Try again xD";
-  }
-}
 
 // Carousel-Funktion
 let slideIndex = 0;
@@ -244,10 +236,6 @@ function createHeartFirework() {
     setTimeout(() => { heart.remove(); }, 1200 + Math.random() * 500);
   }
 }
-
-// Initial Carousel
-showSlide(slideIndex);
-
 </script>
 
 </body>
