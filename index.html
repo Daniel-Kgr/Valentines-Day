@@ -111,6 +111,22 @@ button {
     max-width: 90%;
   }
 }
+/* Herz Animation */
+.heart {
+  position: absolute;
+  font-size: 40px;
+  color: #ff4b6e;
+  animation: floatUp 1s ease-out forwards;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(20px) scale(0.5); }
+  30% { opacity: 1; transform: translateY(-10px) scale(1); }
+  100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
+}
+  
 </style>
 </head>
 
@@ -182,7 +198,23 @@ function changeSlide(n) {
   slideIndex += n;
   showSlide(slideIndex);
 }
+function createHeart() {
+  const carousel = document.querySelector(".carousel-container"); // oder der Container, in dem das Herz erscheinen soll
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
 
+  // zufällige Position innerhalb des Containers
+  heart.style.left = `${50 + Math.random() * 40 - 20}%`;
+  heart.style.top = `${60 + Math.random() * 20 - 10}%`;
+
+  heart.innerHTML = "❤️";
+  carousel.appendChild(heart);
+
+  // nach 1 Sekunde entfernen
+  setTimeout(() => {
+    heart.remove();
+  }, 1000);
+}
 // Initial anzeigen
 showSlide(slideIndex);
 </script>
