@@ -60,32 +60,31 @@ button:hover { transform: scale(1.1); }
   transform: scale(1.1);
 }
 
-/* Container Box für Text */
+/* Carousel & Herzchen */
 .container {
   background: rgba(255,255,255,0.15);
-  padding: 20px 30px;
+  padding: 30px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   width: 90%;
   max-width: 600px;
-  margin: 10px auto;
-  text-align: center;
+  margin: auto;
 }
 
-/* Carousel */
+/* Carousel Wrapper */
 .carousel-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px auto;
-  position: relative;
 }
 
 .carousel-container {
   overflow: hidden;
   width: 100%;
   border-radius: 15px;
+  position: relative;
 }
 
 .carousel-slide {
@@ -94,18 +93,26 @@ button:hover { transform: scale(1.1); }
   width: 100%;
 }
 
-.carousel-slide img {
-  width: 100%;
+.carousel-item {
+  min-width: 100%;
+  box-sizing: border-box;
   flex-shrink: 0;
-  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-item img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 /* Pfeile links/rechts */
 .prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 30px;
   padding: 10px;
   border-radius: 50%;
@@ -113,10 +120,9 @@ button:hover { transform: scale(1.1); }
   background-color: rgba(255,255,255,0.6);
   color: #ff4b6e;
   cursor: pointer;
+  margin: 0 10px;
   z-index: 10;
 }
-.prev { left: -10px; }
-.next { right: -10px; }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
 .heart {
@@ -149,26 +155,22 @@ button:hover { transform: scale(1.1); }
 
 <!-- No-Seite -->
 <section id="noPage" class="hidden">
-  <div class="container">
-    <h1>What do you mean No????</h1>
-    <img src="images/catsideeye.jpg" alt="Cat Sideeye">
-    <h2>Try again honey 😘</h2>
-    <div>
-      <button id="yesBtnNo">YES 😍</button>
-      <button id="noBtnNo">No</button>
-    </div>
+  <h1>What do you mean No????</h1>
+  <img src="images/catsideeye.jpg" alt="Cat Sideeye">
+  <h2>Try again honey 😘</h2>
+  <div>
+    <button id="yesBtnNo">YES 😍</button>
+    <button id="noBtnNo">No</button>
   </div>
 </section>
 
 <!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
-  <div class="container">
-    <h1>Seriously???</h1>
-    <p>Let me ask you again...</p>
-    <h2>Will you be my Valentine? ❤️</h2>
-    <div>
-      <button id="yesBtnNo2">YES I WILL!! ❤️😍</button>
-    </div>
+  <h1>Seriously???</h1>
+  <p>Let me ask you again...</p>
+  <h2>Will you be my Valentine? ❤️</h2>
+  <div>
+    <button id="yesBtnNo2">YES I WILL!! ❤️😍</button>
   </div>
 </section>
 
@@ -181,40 +183,33 @@ button:hover { transform: scale(1.1); }
   </div>
 
   <div class="container hidden" id="mainContent">
-    <div class="container">
-      <h2>Happy Valentines Day my Love ❤️</h2>
-      <p>As we are not able to celebrate this years Valentines Day together i was thinking of something special to surprise you.</p>
-      <p>So i learned how to write basic codes in HTML and created this small website for you.</p>
-    </div>
-
-    <!-- Carousel mit Text + Bild pro Slide -->
     <div class="carousel-wrapper">
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <div class="carousel-container">
         <div class="carousel-slide">
-          <div class="slide">
-            <div class="container"><h2>Slide 1</h2><p>Text über Bild 1</p></div>
+          <div class="carousel-item">
             <img src="images/CSD.jpg" alt="Foto 1">
+            <h3>Foto 1 Text: Our first memory together ❤️</h3>
           </div>
-          <div class="slide">
-            <div class="container"><h2>Slide 2</h2><p>Text über Bild 2</p></div>
+          <div class="carousel-item">
             <img src="images/football.jpg" alt="Foto 2">
+            <h3>Foto 2 Text: Remember this day? 😘</h3>
           </div>
-          <div class="slide">
-            <div class="container"><h2>Slide 3</h2><p>Text über Bild 3</p></div>
+          <div class="carousel-item">
             <img src="images/Lollapalooza.jpg" alt="Foto 3">
+            <h3>Foto 3 Text: Our favorite festival!</h3>
           </div>
-          <div class="slide">
-            <div class="container"><h2>Slide 4</h2><p>Text über Bild 4</p></div>
+          <div class="carousel-item">
             <img src="images/Musemsinsel.jpg" alt="Foto 4">
+            <h3>Foto 4 Text: Walks at the museum island</h3>
           </div>
-          <div class="slide">
-            <div class="container"><h2>Slide 5</h2><p>Text über Bild 5</p></div>
+          <div class="carousel-item">
             <img src="images/Rathhaus.jpg" alt="Foto 5">
+            <h3>Foto 5 Text: The city adventures ❤️</h3>
           </div>
-          <div class="slide">
-            <div class="container"><h2>Slide 6</h2><p>Text über Bild 6</p></div>
+          <div class="carousel-item">
             <img src="images/Treptower.jpg" alt="Foto 6">
+            <h3>Foto 6 Text: Treptower memories 😍</h3>
           </div>
         </div>
       </div>
@@ -261,7 +256,7 @@ document.getElementById("openCarouselBtn").addEventListener("click", () => {
 let slideIndex = 0;
 function showSlide(index) {
   const carouselSlide = document.querySelector("#yesPage .carousel-slide");
-  const slides = carouselSlide.querySelectorAll(".slide");
+  const slides = carouselSlide.querySelectorAll(".carousel-item");
   const total = slides.length;
   if(index >= total) slideIndex = 0;
   if(index < 0) slideIndex = total - 1;
