@@ -44,7 +44,7 @@ button:hover { transform: scale(1.1); }
   margin-bottom: 20px;
 }
 
-/* „Öffnen“-Button Farben */
+/* Öffnen-Button */
 #openCarouselBtn {
   background-color: #ff4b6e;
   color: white;
@@ -94,9 +94,8 @@ button:hover { transform: scale(1.1); }
   border-radius: 15px;
   object-fit: contain;
   cursor: pointer;
-  transition: transform 0.3s;
+  /* Hover entfernt */
 }
-.carousel-slide img:hover { transform: scale(1.05); }
 
 /* Pfeile fixieren */
 .prev, .next {
@@ -188,7 +187,6 @@ button:hover { transform: scale(1.1); }
         <img src="images/Rathhaus.jpg" alt="Foto 5">
         <img src="images/Treptower.jpg" alt="Foto 6">
       </div>
-      <!-- Pfeile jetzt fixiert -->
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
