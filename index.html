@@ -60,7 +60,7 @@ button:hover { transform: scale(1.1); }
   transform: scale(1.1);
 }
 
-/* Container für Text-Box */
+/* Container für Boxen */
 .container {
   background: rgba(255,255,255,0.15);
   padding: 20px 30px;
@@ -75,11 +75,10 @@ button:hover { transform: scale(1.1); }
 .carousel-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pfeile links/rechts */
+  justify-content: space-between;
   max-width: 650px;
   margin: 20px auto;
 }
-
 
 .carousel-container {
   overflow: hidden;
@@ -99,17 +98,30 @@ button:hover { transform: scale(1.1); }
   box-sizing: border-box;
   flex-shrink: 0;
   display: flex;
+  justify-content: center;
+}
+
+.slide-box {
+  background: rgba(255,75,110,0.2);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.carousel-item img {
-  width: auto;        /* Bild behält Breite proportional */
-  max-width: 100%;    /* passt in die Containerbreite */
-  max-height: 400px;  /* Bild wird nicht zu hoch */
-  border-radius: 15px;
-  margin-top: 15px;
+.slide-box h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
 
+.slide-box img {
+  width: auto;
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 15px;
 }
 
 /* Pfeile links/rechts */
@@ -122,7 +134,6 @@ button:hover { transform: scale(1.1); }
   color: #ff4b6e;
   cursor: pointer;
   z-index: 10;
-  position: relative;
 }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
@@ -145,6 +156,7 @@ button:hover { transform: scale(1.1); }
 </head>
 <body>
 
+<!-- Landing Page -->
 <section id="landing">
   <h1>Will you be my Valentine? ❤️</h1>
   <div>
@@ -153,6 +165,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- No-Seite -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -163,6 +176,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -172,6 +186,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- Yes-Seite -->
 <section id="yesPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
@@ -184,30 +199,55 @@ button:hover { transform: scale(1.1); }
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <div class="carousel-container">
         <div class="carousel-slide">
+
           <div class="carousel-item">
-            <div class="container"><h3>Happy Valentines Day my Love ❤️</h3></div>
-            <img src="images/CSD.jpg" alt="Foto 1">
+            <div class="slide-box">
+              <h3>Happy Valentines Day my Love ❤️</h3>
+              <p>Ich wünsche dir einen wundervollen Tag voller Liebe und Glück. Ich liebe dich über alles!</p>
+              <img src="images/CSD.jpg" alt="Foto 1">
+            </div>
           </div>
+
           <div class="carousel-item">
-            <div class="container"><h3>Foto 2 Text: Remember this day? 😘</h3></div>
-            <img src="images/football.jpg" alt="Foto 2">
+            <div class="slide-box">
+              <h3>Foto 2 Text: Remember this day? 😘</h3>
+              <p>Unsere Fußball-Erinnerungen bleiben unvergesslich. Es war so lustig!</p>
+              <img src="images/football.jpg" alt="Foto 2">
+            </div>
           </div>
+
           <div class="carousel-item">
-            <div class="container"><h3>Foto 3 Text: Our favorite festival!</h3></div>
-            <img src="images/Lollapalooza.jpg" alt="Foto 3">
+            <div class="slide-box">
+              <h3>Foto 3 Text: Our favorite festival!</h3>
+              <p>Unser Lieblingsfestival zusammen – das war pure Freude und Musik!</p>
+              <img src="images/Lollapalooza.jpg" alt="Foto 3">
+            </div>
           </div>
+
           <div class="carousel-item">
-            <div class="container"><h3>Foto 4 Text: Walks at the museum island</h3></div>
-            <img src="images/Musemsinsel.jpg" alt="Foto 4">
+            <div class="slide-box">
+              <h3>Foto 4 Text: Walks at the museum island</h3>
+              <p>Spaziergänge auf der Museumsinsel – unsere kleinen Abenteuer! 💖</p>
+              <img src="images/Musemsinsel.jpg" alt="Foto 4">
+            </div>
           </div>
+
           <div class="carousel-item">
-            <div class="container"><h3>Foto 5 Text: The city adventures ❤️</h3></div>
-            <img src="images/Rathhaus.jpg" alt="Foto 5">
+            <div class="slide-box">
+              <h3>Foto 5 Text: The city adventures ❤️</h3>
+              <p>Unsere Abenteuer in der Stadt – jede Erinnerung kostbar!</p>
+              <img src="images/Rathhaus.jpg" alt="Foto 5">
+            </div>
           </div>
+
           <div class="carousel-item">
-            <div class="container"><h3>Foto 6 Text: Treptower memories 😍</h3></div>
-            <img src="images/Treptower.jpg" alt="Foto 6">
+            <div class="slide-box">
+              <h3>Foto 6 Text: Treptower memories 😍</h3>
+              <p>Die Erinnerungen am Treptower Park bleiben unvergessen!</p>
+              <img src="images/Treptower.jpg" alt="Foto 6">
+            </div>
           </div>
+
         </div>
       </div>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
