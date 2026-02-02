@@ -55,8 +55,8 @@ button {
 /* Carousel Styles */
 .carousel-container {
   position: relative;
-  max-width: 500px;
-  max-height: 400px;
+  width: 100%;
+  max-width: 500px; /* Breite des Carousels */
   margin: 20px auto;
   overflow: hidden;
   border-radius: 20px;
@@ -72,15 +72,12 @@ button {
 
 .carousel-slide img {
   width: 100%;
-  height: auto;
+  height: auto;  /* Bildhöhe proportional */
   flex-shrink: 0;
   border-radius: 15px;
+  object-fit: contain; /* WICHTIG: Bild komplett zeigen */
   cursor: pointer;
   transition: transform 0.3s;
-}
-
-.carousel-slide img:hover {
-  transform: scale(1.05);
 }
 
 .prev, .next {
@@ -106,9 +103,9 @@ button {
 @media (max-width: 600px) {
   .carousel-container {
     max-width: 90%;
-    max-height: 300px;
   }
 }
+
 </style>
 </head>
 
