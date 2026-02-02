@@ -192,7 +192,11 @@ function showSlide(index) {
 
   const offset = -slideIndex * 100;
   document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
+
+  // Herzchen erzeugen
+  createHeart();
 }
+
 
 function changeSlide(n) {
   slideIndex += n;
