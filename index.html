@@ -4,27 +4,51 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Valentines Message for my Love ❤️</title>
-
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: white;
   text-align: center;
 }
 
+/* Allgemein */
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  transition: transform 0.2s;
+}
+button:hover { transform: scale(1.1); }
+
+/* Buttons Farben */
+#yesBtnLanding, #yesBtnFun { background-color: #ff4b6e; }
+#noBtnLanding, #noBtnFun { background-color: #555; }
+
+/* Carousel & Herzchen */
 .container {
   background: rgba(255,255,255,0.15);
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   width: 90%;
   max-width: 600px;
+  margin: auto;
 }
 
 input {
@@ -37,22 +61,6 @@ input {
   text-align: center;
 }
 
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  background: white;
-  color: #ff4b6e;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Carousel Styles */
 .carousel-container {
   position: relative;
   width: 100%;
@@ -72,19 +80,14 @@ button {
 
 .carousel-slide img {
   width: 100%;
-  height: auto;
   flex-shrink: 0;
   border-radius: 15px;
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s;
 }
+.carousel-slide img:hover { transform: scale(1.05); }
 
-.carousel-slide img:hover {
-  transform: scale(1.05);
-}
-
-/* Pfeile links/rechts */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -98,21 +101,9 @@ button {
   color: #ff4b6e;
   z-index: 10;
 }
+.prev { left: 10px; } .next { right: 10px; }
+.prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
-.prev { left: 10px; }
-.next { right: 10px; }
-
-.prev:hover, .next:hover {
-  background-color: rgba(255,255,255,0.9);
-}
-
-@media (max-width: 600px) {
-  .carousel-container {
-    max-width: 90%;
-  }
-}
-
-/* Herz Animation */
 .heart {
   position: absolute;
   font-size: 40px;
@@ -127,46 +118,91 @@ button {
   30% { opacity: 1; transform: translateY(-10px) scale(1); }
   100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
 }
+.hidden { display: none; }
+img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
+
 </style>
 </head>
-
 <body>
 
-<!-- Passwort Login -->
-<div class="container" id="loginBox">
-  <h1>❤️</h1>
-  <h2>For Katt</h2>
-  <h3>Happy Valentines Day my Love</h3>
-  <p>Type in our Anniversary Date to unlock this special Message 💌</p>
-  <input type="password" id="passwordInput" placeholder="Passwort">
-  <br>
-  <button onclick="checkPassword()">Open</button>
-  <p id="error" style="color: #ffe6e6;"></p>
-</div>
-
-<!-- Hauptinhalt mit Carousel -->
-<div class="container hidden" id="mainContent">
-  <h2>Happy Valentines Day my Love ❤️</h2>
-  <p>TEXT</p>
-  <p>TEXT</p>
-
-  <!-- Carousel -->
-  <div class="carousel-container">
-    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-    <div class="carousel-slide">
-      <img src="images/CSD.jpg" alt="Foto 1">
-      <img src="images/football.jpg" alt="Foto 2">
-      <img src="images/Lollapalooza.jpg" alt="Foto 3">
-      <img src="images/Musemsinsel.jpg" alt="Foto 4">
-      <img src="images/Rathhaus.jpg" alt="Foto 5">
-      <img src="images/Treptower.jpg" alt="Foto 6">
-    </div>
-    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+<!-- Landing Page -->
+<section id="landing">
+  <h1>Will you be my Valentine? ❤️</h1>
+  <div>
+    <button id="yesBtnLanding">Yes 😍</button>
+    <button id="noBtnLanding">No 😢</button>
   </div>
-</div>
+</section>
 
-<!-- JavaScript -->
+<!-- Fun-Seite -->
+<section id="funPage" class="hidden">
+  <h1>What do you mean No???? Try again honey 😘</h1>
+  <img src="images/funnyImage.jpg" alt="Funny Image">
+  <div>
+    <button id="yesBtnFun">YES 😍</button>
+    <button id="noBtnFun">No 😢</button>
+  </div>
+</section>
+
+<!-- Passwort + Carousel -->
+<section id="passwordPage" class="hidden">
+  <div class="container" id="loginBox">
+    <h1>❤️</h1>
+    <h2>For Katt</h2>
+    <h3>Happy Valentines Day my Love</h3>
+    <p>Type in our Anniversary Date to unlock this special Message 💌</p>
+    <input type="password" id="passwordInput" placeholder="Passwort">
+    <br>
+    <button onclick="checkPassword()">Open</button>
+    <p id="error" style="color: #ffe6e6;"></p>
+  </div>
+
+  <div class="container hidden" id="mainContent">
+    <h2>Happy Valentines Day my Love ❤️</h2>
+    <p>TEXT</p>
+    <p>TEXT</p>
+
+    <!-- Carousel -->
+    <div class="carousel-container">
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+      <div class="carousel-slide">
+        <img src="images/CSD.jpg" alt="Foto 1">
+        <img src="images/football.jpg" alt="Foto 2">
+        <img src="images/Lollapalooza.jpg" alt="Foto 3">
+        <img src="images/Musemsinsel.jpg" alt="Foto 4">
+        <img src="images/Rathhaus.jpg" alt="Foto 5">
+        <img src="images/Treptower.jpg" alt="Foto 6">
+      </div>
+      <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </div>
+  </div>
+</section>
+
 <script>
+// Landing / Fun Page Logik
+const landing = document.getElementById("landing");
+const funPage = document.getElementById("funPage");
+const passwordPage = document.getElementById("passwordPage");
+
+document.getElementById("yesBtnLanding").addEventListener("click", () => {
+  landing.classList.add("hidden");
+  passwordPage.classList.remove("hidden");
+});
+
+document.getElementById("noBtnLanding").addEventListener("click", () => {
+  landing.classList.add("hidden");
+  funPage.classList.remove("hidden");
+});
+
+document.getElementById("yesBtnFun").addEventListener("click", () => {
+  funPage.classList.add("hidden");
+  passwordPage.classList.remove("hidden");
+});
+
+document.getElementById("noBtnFun").addEventListener("click", () => {
+  funPage.innerHTML = "<h1>😢 Schade, vielleicht ein anderes Mal...</h1>";
+});
+
 // Passwort-Funktion
 const correctPassword = "02.04.2024";
 
@@ -182,52 +218,36 @@ function checkPassword() {
 
 // Carousel-Funktion
 let slideIndex = 0;
-
 function showSlide(index) {
   const slides = document.querySelectorAll(".carousel-slide img");
   const total = slides.length;
-
   if(index >= total) slideIndex = 0;
   if(index < 0) slideIndex = total - 1;
-
   const offset = -slideIndex * 100;
   document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
-
-  // Herz-Feuerwerk erzeugen
   createHeartFirework();
 }
+function changeSlide(n) { slideIndex += n; showSlide(slideIndex); }
 
-function changeSlide(n) {
-  slideIndex += n;
-  showSlide(slideIndex);
-}
-
-// Herz-Feuerwerk-Funktion
+// Herz-Feuerwerk
 function createHeartFirework() {
   const carousel = document.querySelector(".carousel-container");
-  const heartCount = 5; // Anzahl der Herzen
-
+  const heartCount = 5;
   for (let i = 0; i < heartCount; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-
-    // Zufällige Position & Größe
     heart.style.left = `${Math.random() * 80 + 10}%`;
     heart.style.top = `${Math.random() * 50 + 30}%`;
     heart.style.fontSize = `${Math.random() * 30 + 20}px`;
-
     heart.innerHTML = "❤️";
     carousel.appendChild(heart);
-
-    // Herz entfernen nach kurzer Zeit
-    setTimeout(() => {
-      heart.remove();
-    }, 1200 + Math.random() * 500);
+    setTimeout(() => { heart.remove(); }, 1200 + Math.random() * 500);
   }
 }
 
-// Initial anzeigen
+// Initial Carousel
 showSlide(slideIndex);
+
 </script>
 
 </body>
