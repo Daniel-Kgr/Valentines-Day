@@ -98,6 +98,7 @@ button:hover { transform: scale(1.1); }
 }
 .carousel-slide img:hover { transform: scale(1.05); }
 
+/* Pfeile fixieren */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -109,9 +110,10 @@ button:hover { transform: scale(1.1); }
   border-radius: 50%;
   cursor: pointer;
   color: #ff4b6e;
-  z-index: 10;
+  z-index: 20;
 }
-.prev { left: 10px; } .next { right: 10px; }
+.prev { left: 10px; }
+.next { right: 10px; }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
 .heart {
@@ -168,7 +170,7 @@ button:hover { transform: scale(1.1); }
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
     <p>Click the button to see your special Valentines Message</p>
-    <button id="openCarouselBtn">Öffnen</button>
+    <button id="openCarouselBtn">💌</button>
   </div>
 
   <!-- Carousel -->
@@ -178,7 +180,6 @@ button:hover { transform: scale(1.1); }
     <p>TEXT</p>
 
     <div class="carousel-container">
-      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <div class="carousel-slide">
         <img src="images/CSD.jpg" alt="Foto 1">
         <img src="images/football.jpg" alt="Foto 2">
@@ -187,6 +188,8 @@ button:hover { transform: scale(1.1); }
         <img src="images/Rathhaus.jpg" alt="Foto 5">
         <img src="images/Treptower.jpg" alt="Foto 6">
       </div>
+      <!-- Pfeile jetzt fixiert -->
+      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
   </div>
@@ -259,5 +262,6 @@ function createHeartFirework() {
   }
 }
 </script>
+
 </body>
 </html>
