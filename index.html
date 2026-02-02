@@ -56,7 +56,7 @@ button {
 .carousel-container {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Breite des Carousels */
+  max-width: 500px;
   margin: 20px auto;
   overflow: hidden;
   border-radius: 20px;
@@ -75,7 +75,7 @@ button {
   height: auto;
   flex-shrink: 0;
   border-radius: 15px;
-  object-fit: contain; /* Bild komplett zeigen */
+  object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -111,12 +111,12 @@ button {
     max-width: 90%;
   }
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- Passwort Login -->
 <div class="container" id="loginBox">
   <h1>❤️</h1>
   <h2>Happy Valentines Day my Love</h2>
@@ -127,32 +127,34 @@ button {
   <p id="error" style="color: #ffe6e6;"></p>
 </div>
 
+<!-- Hauptinhalt mit Carousel -->
 <div class="container hidden" id="mainContent">
   <h2>Happy Valentines Day my Love ❤️</h2>
   <p>TEXT</p>
   <p>TEXT</p>
 
-  <!-- Slide Carousel -->
+  <!-- Carousel -->
   <div class="carousel-container">
-  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-  <div class="carousel-slide">
-    <img src="images/CSD.jpg" alt="Foto 1">
-    <img src="images/EDC.png" alt="Foto 2">
-    <img src="images/football.jpg" alt="Foto 3">
-    <img src="images/Lollapalooza.jpg" alt="Foto 4">
-    <img src="images/Musemsinsel.jpg" alt="Foto 5">
-    <img src="images/Rathhaus.jpg" alt="Foto 6">
-    <img src="images/Treptower.jpg" alt="Foto 7">
-    <img src="images/videocallcat.png" alt="Foto 8">
-    <img src="images/videocallhome.png" alt="Foto 9">
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <div class="carousel-slide">
+      <img src="images/CSD.jpg" alt="Foto 1">
+      <img src="images/EDC.png" alt="Foto 2">
+      <img src="images/football.jpg" alt="Foto 3">
+      <img src="images/Lollapalooza.jpg" alt="Foto 4">
+      <img src="images/Musemsinsel.jpg" alt="Foto 5">
+      <img src="images/Rathhaus.jpg" alt="Foto 6">
+      <img src="images/Treptower.jpg" alt="Foto 7">
+      <img src="images/videocallcat.png" alt="Foto 8">
+      <img src="images/videocallhome.png" alt="Foto 9">
+    </div>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
   </div>
-  <button class="next" onclick="changeSlide(1)">&#10095;</button>
 </div>
 
-</div>
-
+<!-- JavaScript -->
 <script>
-const correctPassword = "02042024"; // HIER DEIN PASSWORT EINTRAGEN
+// Passwort-Funktion
+const correctPassword = "02042024";
 
 function checkPassword() {
   const input = document.getElementById("passwordInput").value;
@@ -164,7 +166,7 @@ function checkPassword() {
   }
 }
 
-// Carousel Funktion
+// Carousel-Funktion
 let slideIndex = 0;
 
 function showSlide(index) {
@@ -185,7 +187,6 @@ function changeSlide(n) {
 
 // Initial anzeigen
 showSlide(slideIndex);
-}
 </script>
 
 </body>
