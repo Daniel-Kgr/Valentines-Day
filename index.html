@@ -36,7 +36,7 @@ button:hover { transform: scale(1.1); }
 #yesBtnLanding, #yesBtnNo, #yesBtnNo2 { background-color: #ff4b6e; }
 #noBtnLanding, #noBtnNo { background-color: #555; }
 
-/* No-Seite 1 Bild */
+/* No-Seite Bilder */
 #noPage img {
   max-width: 40%;
   max-height: 40%;
@@ -71,39 +71,35 @@ button:hover { transform: scale(1.1); }
   margin: auto;
 }
 
-.carousel-container {
-  position: relative;
-  width: 100%;
+/* Carousel Wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 500px;
-  height: 300px; 
   margin: 20px auto;
-  overflow: hidden; /* Nur ein Bild sichtbar */
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.1);
+}
+
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 15px;
 }
 
 .carousel-slide {
   display: flex;
-  width: 100%;
-  height: 100%;
   transition: transform 0.5s ease-in-out;
 }
 
 .carousel-slide img {
   width: 100%;
   flex-shrink: 0;
-  height: 100%;
   object-fit: cover;
   border-radius: 15px;
-  cursor: pointer;
 }
 
-/* Pfeile außerhalb */
+/* Pfeile links/rechts */
 .prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-size: 30px;
   padding: 10px;
   border-radius: 50%;
@@ -111,10 +107,9 @@ button:hover { transform: scale(1.1); }
   background-color: rgba(255,255,255,0.6);
   color: #ff4b6e;
   cursor: pointer;
+  margin: 0 10px;
   z-index: 10;
 }
-.prev { left: -60px; }
-.next { right: -60px; }
 .prev:hover, .next:hover { background-color: rgba(255,255,255,0.9); }
 
 .heart {
@@ -136,6 +131,7 @@ button:hover { transform: scale(1.1); }
 </head>
 <body>
 
+<!-- Landing Page -->
 <section id="landing">
   <h1>Will you be my Valentine? ❤️</h1>
   <div>
@@ -144,6 +140,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- No-Seite -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -154,6 +151,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -163,6 +161,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
+<!-- Yes-Seite -->
 <section id="yesPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
@@ -175,16 +174,19 @@ button:hover { transform: scale(1.1); }
     <p>TEXT</p>
     <p>TEXT</p>
 
-    <div class="carousel-container">
-      <div class="carousel-slide">
-        <img src="images/CSD.jpg" alt="Foto 1">
-        <img src="images/football.jpg" alt="Foto 2">
-        <img src="images/Lollapalooza.jpg" alt="Foto 3">
-        <img src="images/Musemsinsel.jpg" alt="Foto 4">
-        <img src="images/Rathhaus.jpg" alt="Foto 5">
-        <img src="images/Treptower.jpg" alt="Foto 6">
-      </div>
+    <!-- Carousel -->
+    <div class="carousel-wrapper">
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+      <div class="carousel-container">
+        <div class="carousel-slide">
+          <img src="images/CSD.jpg" alt="Foto 1">
+          <img src="images/football.jpg" alt="Foto 2">
+          <img src="images/Lollapalooza.jpg" alt="Foto 3">
+          <img src="images/Musemsinsel.jpg" alt="Foto 4">
+          <img src="images/Rathhaus.jpg" alt="Foto 5">
+          <img src="images/Treptower.jpg" alt="Foto 6">
+        </div>
+      </div>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
   </div>
@@ -196,6 +198,7 @@ const noPage = document.getElementById("noPage");
 const noPage2 = document.getElementById("noPage2");
 const yesPage = document.getElementById("yesPage");
 
+// Landing / No-Seiten Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   yesPage.classList.remove("hidden");
@@ -217,12 +220,14 @@ document.getElementById("yesBtnNo2").addEventListener("click", () => {
   yesPage.classList.remove("hidden");
 });
 
+// Öffne Carousel
 document.getElementById("openCarouselBtn").addEventListener("click", () => {
   document.getElementById("openContainer").classList.add("hidden");
   document.getElementById("mainContent").classList.remove("hidden");
   showSlide(slideIndex);
 });
 
+// Carousel-Funktion
 let slideIndex = 0;
 function showSlide(index) {
   const carouselSlide = document.querySelector("#yesPage .carousel-slide");
@@ -233,11 +238,13 @@ function showSlide(index) {
   carouselSlide.style.transform = `translateX(${-slideIndex * 100}%)`;
   createHeartFirework();
 }
+
 function changeSlide(n) {
   slideIndex += n;
   showSlide(slideIndex);
 }
 
+// Herzchen-Animation
 function createHeartFirework() {
   const carousel = document.querySelector("#yesPage .carousel-container");
   for (let i = 0; i < 5; i++) {
