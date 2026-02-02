@@ -52,51 +52,62 @@ button {
   display: none;
 }
 
-/* Galerie Styles */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 10px;
-  margin-top: 20px;
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  max-width: 500px;
+  max-height: 400px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.1);
 }
 
-.gallery img {
+.carousel-slide {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
   width: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
   border-radius: 15px;
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.gallery img:hover {
+.carousel-slide img:hover {
   transform: scale(1.05);
 }
 
-/* Lightbox */
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 1000;
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255,255,255,0.6);
+  border: none;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #ff4b6e;
 }
 
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 20px;
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+  background-color: rgba(255,255,255,0.9);
 }
 
-#lightbox.show {
-  visibility: visible;
-  opacity: 1;
+@media (max-width: 600px) {
+  .carousel-container {
+    max-width: 90%;
+    max-height: 300px;
+  }
 }
 </style>
 </head>
@@ -118,25 +129,22 @@ button {
   <p>TEXT</p>
   <p>TEXT</p>
 
- <div class="carousel-container">
-  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-  <div class="carousel-slide">
-    <img src="images/CSD.jpg" alt="Foto 1">
-    <img src="images/EDC.png" alt="Foto 2">
-    <img src="images/football.jpg" alt="Foto 3">
-    <img src="images/Lollapalooza.jpg" alt="Foto 4">
-    <img src="images/Musemsinsel.jpg" alt="Foto 5">
-    <img src="images/Rathhaus.jpg" alt="Foto 6">
-    <img src="images/Treptower.jpg" alt="Foto 7">
-    <img src="images/videocallcat.png" alt="Foto 8">
-    <img src="images/videocallhome.png" alt="Foto 9">
+  <!-- Slide Carousel -->
+  <div class="carousel-container">
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <div class="carousel-slide">
+      <img src="images/CSD.jpg" alt="Foto 1">
+      <img src="images/EDC.png" alt="Foto 2">
+      <img src="images/football.jpg" alt="Foto 3">
+      <img src="images/Lollapalooza.jpg" alt="Foto 4">
+      <img src="images/Musemsinsel.jpg" alt="Foto 5">
+      <img src="images/Rathhaus.jpg" alt="Foto 6">
+      <img src="images/Treptower.jpg" alt="Foto 7">
+      <img src="images/videocallcat.png" alt="Foto 8">
+      <img src="images/videocallhome.png" alt="Foto 9">
+    </div>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
   </div>
-  <button class="next" onclick="changeSlide(1)">&#10095;</button>
-</div>
-
-<!-- Lightbox -->
-<div id="lightbox" onclick="hideLightbox()">
-  <img id="lightboxImg" src="">
 </div>
 
 <script>
@@ -152,21 +160,27 @@ function checkPassword() {
   }
 }
 
-// Lightbox Funktion
-const galleryImages = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
+// Carousel Funktion
+let slideIndex = 0;
 
-galleryImages.forEach(img => {
-  img.addEventListener("click", () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add("show");
-  });
-});
-
-function hideLightbox() {
-  lightbox.classList.remove("show");
+function showSlide(index) {
+  const slides = document.querySelectorAll(".carousel-slide img");
+  const total = slides.length;
+  
+  if(index >= total) slideIndex = 0;
+  if(index < 0) slideIndex = total - 1;
+  
+  const offset = -slideIndex * 100;
+  document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
 }
+
+function changeSlide(n) {
+  slideIndex += n;
+  showSlide(slideIndex);
+}
+
+// Initial anzeigen
+showSlide(slideIndex);
 </script>
 
 </body>
