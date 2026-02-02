@@ -75,9 +75,9 @@ button:hover { transform: scale(1.1); }
   position: relative;
   width: 100%;
   max-width: 500px;
-  height: 300px; /* feste Höhe */
+  height: 300px; 
   margin: 20px auto;
-  overflow: visible; /* Pfeile außerhalb sichtbar */
+  overflow: visible;
   border-radius: 20px;
   backdrop-filter: blur(10px);
   background: rgba(255,255,255,0.1);
@@ -94,11 +94,11 @@ button:hover { transform: scale(1.1); }
   height: 100%;
   flex-shrink: 0;
   border-radius: 15px;
-  object-fit: cover; /* oder contain, je nach Wunsch */
+  object-fit: cover; 
   cursor: pointer;
 }
 
-/* Pfeile links/rechts außerhalb der Bilder */
+/* Pfeile links/rechts */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -149,7 +149,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Fun-Seite 1 → noPage -->
+<!-- noPage -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -160,7 +160,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Fun-Seite 2 → noPage2 -->
+<!-- noPage2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -170,7 +170,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Klick-Seite → yesPage -->
+<!-- yesPage -->
 <section id="yesPage" class="hidden">
   <div class="container" id="openContainer">
     <h2>I knew you would say yes my Love ❤️</h2>
@@ -193,7 +193,7 @@ button:hover { transform: scale(1.1); }
         <img src="images/Rathhaus.jpg" alt="Foto 5">
         <img src="images/Treptower.jpg" alt="Foto 6">
       </div>
-      <!-- Pfeile jetzt außerhalb -->
+    
       <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
       <button class="next" onclick="changeSlide(1)">&#10095;</button>
     </div>
@@ -207,7 +207,7 @@ const noPage = document.getElementById("noPage");
 const noPage2 = document.getElementById("noPage2");
 const yesPage = document.getElementById("yesPage");
 
-// Landing / Fun-Seite Logik
+// Landing / No-Seite Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   yesPage.classList.remove("hidden");
