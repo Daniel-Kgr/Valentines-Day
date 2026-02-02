@@ -44,6 +44,22 @@ button:hover { transform: scale(1.1); }
   margin-bottom: 20px;
 }
 
+/* „Öffnen“-Button Farben */
+#openCarouselBtn {
+  background-color: #ff4b6e;
+  color: white;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+#openCarouselBtn:hover {
+  background-color: #ff2a55;
+  transform: scale(1.1);
+}
+
 /* Carousel & Herzchen */
 .container {
   background: rgba(255,255,255,0.15);
@@ -210,23 +226,6 @@ document.getElementById("openCarouselBtn").addEventListener("click", () => {
   document.getElementById("mainContent").classList.remove("hidden");
   showSlide(slideIndex);
 });
-  
-/* Farbe für den „Öffnen“-Button */
-#openCarouselBtn {
-  background-color: #ff4b6e;  /* Hauptfarbe */
-  color: white;               /* Textfarbe */
-  font-weight: bold;
-  padding: 15px 30px;
-  border-radius: 25px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#openCarouselBtn:hover {
-  background-color: #ff2a55;  /* Hover-Farbe */
-  transform: scale(1.1);      /* kleiner Zoom-Effekt beim Hover */
-}
 
 // Carousel-Funktion
 let slideIndex = 0;
@@ -259,6 +258,5 @@ function createHeartFirework() {
   }
 }
 </script>
-
 </body>
 </html>
