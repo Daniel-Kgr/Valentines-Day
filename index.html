@@ -39,6 +39,7 @@ button:hover { transform: scale(1.1); }
 /* Fun-Seite 1 Bild verkleinern */
 #funPage img {
   max-width: 50%;
+  max-height: 40%;
   border-radius: 20px;
   margin-bottom: 20px;
 }
@@ -112,32 +113,7 @@ button:hover { transform: scale(1.1); }
   100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
 }
 .hidden { display: none; }
-
-/* Lightbox Styles */
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s;
-  z-index: 1000;
-}
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 20px;
-}
-#lightbox.show {
-  visibility: visible;
-  opacity: 1;
-}
+img { max-width: 80%; border-radius: 20px; margin-bottom: 20px; }
 </style>
 </head>
 <body>
@@ -165,7 +141,7 @@ button:hover { transform: scale(1.1); }
 <!-- Fun-Seite 2 -->
 <section id="funPage2" class="hidden">
   <h1>Seriously???</h1>
-  <p>Let me ask you againg..</p>
+  <p>Let me ask you again...</p>
   <h2>Will you be my Valentine? ❤️</h2>
   <div>
     <button id="yesBtnFun2">YES I WILL!! ❤️😍</button>
@@ -200,11 +176,6 @@ button:hover { transform: scale(1.1); }
     </div>
   </div>
 </section>
-
-<!-- Lightbox -->
-<div id="lightbox">
-  <img src="" alt="Vergrößertes Bild">
-</div>
 
 <script>
 // Elemente
@@ -272,18 +243,7 @@ function createHeartFirework() {
     setTimeout(() => heart.remove(), 1200 + Math.random() * 500);
   }
 }
-
-// Lightbox
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = lightbox.querySelector("img");
-document.querySelectorAll("#passwordPage .carousel-slide img").forEach(img => {
-  img.addEventListener("click", () => {
-    lightboxImg.src = img.src;
-    lightbox.classList.add("show");
-  });
-});
-lightbox.addEventListener("click", () => lightbox.classList.remove("show"));
-
 </script>
+
 </body>
 </html>
