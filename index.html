@@ -72,14 +72,19 @@ button {
 
 .carousel-slide img {
   width: 100%;
-  height: auto;  /* Bildhöhe proportional */
+  height: auto;
   flex-shrink: 0;
   border-radius: 15px;
-  object-fit: contain; /* WICHTIG: Bild komplett zeigen */
+  object-fit: contain; /* Bild komplett zeigen */
   cursor: pointer;
   transition: transform 0.3s;
 }
 
+.carousel-slide img:hover {
+  transform: scale(1.05);
+}
+
+/* Pfeile links/rechts */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -91,6 +96,7 @@ button {
   border-radius: 50%;
   cursor: pointer;
   color: #ff4b6e;
+  z-index: 10;
 }
 
 .prev { left: 10px; }
@@ -128,20 +134,21 @@ button {
 
   <!-- Slide Carousel -->
   <div class="carousel-container">
-    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-    <div class="carousel-slide">
-      <img src="images/CSD.jpg" alt="Foto 1">
-      <img src="images/EDC.png" alt="Foto 2">
-      <img src="images/football.jpg" alt="Foto 3">
-      <img src="images/Lollapalooza.jpg" alt="Foto 4">
-      <img src="images/Musemsinsel.jpg" alt="Foto 5">
-      <img src="images/Rathhaus.jpg" alt="Foto 6">
-      <img src="images/Treptower.jpg" alt="Foto 7">
-      <img src="images/videocallcat.png" alt="Foto 8">
-      <img src="images/videocallhome.png" alt="Foto 9">
-    </div>
-    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+  <div class="carousel-slide">
+    <img src="images/CSD.jpg" alt="Foto 1">
+    <img src="images/EDC.png" alt="Foto 2">
+    <img src="images/football.jpg" alt="Foto 3">
+    <img src="images/Lollapalooza.jpg" alt="Foto 4">
+    <img src="images/Musemsinsel.jpg" alt="Foto 5">
+    <img src="images/Rathhaus.jpg" alt="Foto 6">
+    <img src="images/Treptower.jpg" alt="Foto 7">
+    <img src="images/videocallcat.png" alt="Foto 8">
+    <img src="images/videocallhome.png" alt="Foto 9">
   </div>
+  <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
 </div>
 
 <script>
@@ -163,10 +170,10 @@ let slideIndex = 0;
 function showSlide(index) {
   const slides = document.querySelectorAll(".carousel-slide img");
   const total = slides.length;
-  
+
   if(index >= total) slideIndex = 0;
   if(index < 0) slideIndex = total - 1;
-  
+
   const offset = -slideIndex * 100;
   document.querySelector(".carousel-slide").style.transform = `translateX(${offset}%)`;
 }
@@ -178,6 +185,7 @@ function changeSlide(n) {
 
 // Initial anzeigen
 showSlide(slideIndex);
+}
 </script>
 
 </body>
