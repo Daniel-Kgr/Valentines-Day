@@ -36,6 +36,17 @@ button:hover { transform: scale(1.1); }
 #yesBtnLanding, #yesBtnNo, #yesBtnNo2 { background-color: #ff4b6e; }
 #noBtnLanding, #noBtnNo { background-color: #555; }
 
+/* Container für rosa Box */
+.container {
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
 /* No-Seite Bilder */
 #noPage img {
   max-width: 40%;
@@ -58,17 +69,6 @@ button:hover { transform: scale(1.1); }
 #openCarouselBtn:hover {
   background-color: #ff2a55;
   transform: scale(1.1);
-}
-
-/* Carousel & Herzchen */
-.container {
-  background: rgba(255,255,255,0.15);
-  padding: 30px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  width: 90%;
-  max-width: 600px;
-  margin: auto;
 }
 
 /* Carousel Wrapper */
@@ -95,7 +95,7 @@ button:hover { transform: scale(1.1); }
 }
 
 .carousel-item {
-  flex: 0 0 100%;   /* DAS ist der wichtige Fix */
+  flex: 0 0 100%;
   max-width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -141,24 +141,21 @@ button:hover { transform: scale(1.1); }
   30% { opacity: 1; transform: translateY(-10px) scale(1); }
   100% { opacity: 0; transform: translateY(-50px) scale(1.2); }
 }
+
 .hidden { display: none; }
 
 /* --- Mobile-Optimierung für Carousel --- */
 @media (max-width: 600px) {
-
   .carousel-wrapper {
-    gap: 5px; /* kleiner Abstand zwischen Pfeilen und Carousel */
+    gap: 5px;
   }
-
   .prev, .next {
-    font-size: 24px; /* Pfeile kleiner */
-    padding: 8px;    /* besser klickbar */
+    font-size: 24px;
+    padding: 8px;
   }
-
   .carousel-item img {
-    max-height: 250px; /* Bildhöhe reduziert auf Handy */
+    max-height: 250px;
   }
-
 }
 </style>
 </head>
@@ -166,31 +163,37 @@ button:hover { transform: scale(1.1); }
 
 <!-- Landing Page -->
 <section id="landing">
-  <h1>Will you be my Valentine? ❤️</h1>
-  <div>
-    <button id="yesBtnLanding">Yes 😍</button>
-    <button id="noBtnLanding">No 😢</button>
+  <div class="container">
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div>
+      <button id="yesBtnLanding">Yes 😍</button>
+      <button id="noBtnLanding">No 😢</button>
+    </div>
   </div>
 </section>
 
 <!-- No-Seite -->
 <section id="noPage" class="hidden">
-  <h1>What do you mean No????</h1>
-  <img src="images/catsideeye.jpg" alt="Cat Sideeye">
-  <h2>Try again honey 😘</h2>
-  <div>
-    <button id="yesBtnNo">YES 😍</button>
-    <button id="noBtnNo">No</button>
+  <div class="container">
+    <h1>What do you mean No????</h1>
+    <img src="images/catsideeye.jpg" alt="Cat Sideeye">
+    <h2>Try again honey 😘</h2>
+    <div>
+      <button id="yesBtnNo">YES 😍</button>
+      <button id="noBtnNo">No</button>
+    </div>
   </div>
 </section>
 
 <!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
-  <h1>Seriously???</h1>
-  <p>Let me ask you again...</p>
-  <h2>Will you be my Valentine? ❤️</h2>
-  <div>
-    <button id="yesBtnNo2">YES I WILL!! ❤️😍</button>
+  <div class="container">
+    <h1>Seriously???</h1>
+    <p>Let me ask you again...</p>
+    <h2>Will you be my Valentine? ❤️</h2>
+    <div>
+      <button id="yesBtnNo2">YES I WILL!! ❤️😍</button>
+    </div>
   </div>
 </section>
 
