@@ -94,6 +94,7 @@ button:hover { transform: scale(1.1); }
   border-radius: 15px;
   object-fit: contain;
   cursor: pointer;
+  /* Hover entfernt, keine Verschiebung */
 }
 
 /* Pfeile fixieren */
@@ -109,6 +110,7 @@ button:hover { transform: scale(1.1); }
   cursor: pointer;
   color: #ff4b6e;
   z-index: 20;
+  pointer-events: auto; /* damit Klicks funktionieren */
 }
 .prev { left: 10px; }
 .next { right: 10px; }
@@ -142,7 +144,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Fun-Seite 1 → noPage -->
+<!-- No-Seite 1 -->
 <section id="noPage" class="hidden">
   <h1>What do you mean No????</h1>
   <img src="images/catsideeye.jpg" alt="Cat Sideeye">
@@ -153,7 +155,7 @@ button:hover { transform: scale(1.1); }
   </div>
 </section>
 
-<!-- Fun-Seite 2 → noPage2 -->
+<!-- No-Seite 2 -->
 <section id="noPage2" class="hidden">
   <h1>Seriously???</h1>
   <p>Let me ask you again...</p>
@@ -199,7 +201,7 @@ const noPage = document.getElementById("noPage");
 const noPage2 = document.getElementById("noPage2");
 const yesPage = document.getElementById("yesPage");
 
-// Landing / Fun-Seite Logik
+// Landing / No-Seiten Logik
 document.getElementById("yesBtnLanding").addEventListener("click", () => {
   landing.classList.add("hidden");
   yesPage.classList.remove("hidden");
