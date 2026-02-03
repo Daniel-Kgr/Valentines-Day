@@ -429,7 +429,8 @@ function createFloatingHeart() {
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = Math.random() * 20 + 15 + "px";
   heart.style.animationDuration = Math.random() * 10 + 10 + "s";
-
+  heart.style.opacity = Math.random() * 0.5 + 0.5;
+  
   container.appendChild(heart);
 
   setTimeout(() => {
